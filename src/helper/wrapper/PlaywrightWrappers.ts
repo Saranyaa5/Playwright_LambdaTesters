@@ -25,6 +25,10 @@ export default class PlaywrightWrapper{
 
     }
 
+    async waitforsometime(time: number){
+        await this.page.waitForTimeout(time);   
+    }
+    
     async fill(selector: string, value: string) {
         await this.page.waitForSelector(selector);
         await this.page.fill(selector, value);
