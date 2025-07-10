@@ -1,0 +1,29 @@
+{
+  "name": "playwright_lambdatesters",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "clean:reports": "rimraf test-results reports",
+    "testonly": "cross-env \"npx cucumber-js || exit 0\"",
+    "test": "npm run clean:reports && npm run testonly && npm run posttest",
+    "posttest": "echo Running report generator... && npx ts-node src/helper/report.ts",
+    "test:rerun": "cucumber-js -p rerun @rerun.txt"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@cucumber/cucumber": "^11.3.0",
+    "@playwright/test": "^1.53.2",
+    "@types/node": "^24.0.12",
+    "cross-env": "^7.0.3",
+    "dotenv": "^17.2.0",
+    "multiple-cucumber-html-reporter": "^3.9.3",
+    "rimraf": "^6.0.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3",
+    "winston": "^3.17.0"
+  }
+}
