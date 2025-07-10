@@ -7,8 +7,8 @@ import { getEnv } from '../helper/env/env';
 import { invokeBrowser } from '../helper/browsers/browserManager';
 import { createLogger } from 'winston';
 import { options } from '../helper/util/logger';
-// import HeaderPage from '../pages/headerPage';
-// import LoginPage from '../pages/loginPage';
+import HeaderPage from '../pages/HeaderPage';
+import RegisterPage from '../pages/registrationPage';
 
 let browser: Browser;
 let context: BrowserContext;
@@ -25,8 +25,8 @@ Before(async function( { pickle }) {
     const page=await context.newPage();
     pageFixture.page=page;
 
-    // pageFixture.headerPage = new HeaderPage(page);
-    // pageFixture.loginPage = new LoginPage(page);
+    pageFixture.headerPage = new HeaderPage(page);
+    pageFixture.registerPage = new RegisterPage(page);
     pageFixture.logger = createLogger(options(scenarioName));
    
     
