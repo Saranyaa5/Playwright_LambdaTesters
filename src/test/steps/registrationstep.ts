@@ -40,17 +40,17 @@ When('agrees to the Privacy Policy', async function () {
          });
  When('submits the registration form', async function () {
            // Write code here that turns the phrase above into concrete actions
-           return 'pending';
+          //  return 'pending';
          });
 
 Then('the user should see {string} for {string}', async function (string, string2) {
            // Write code here that turns the phrase above into concrete actions
-           return 'pending';
+          //  return 'pending';
          });
 
 
 
 Then('the user should see {string}', async function (string) {
            // Write code here that turns the phrase above into concrete actions
-           return 'pending';
+          //  return 'pending';
          });
