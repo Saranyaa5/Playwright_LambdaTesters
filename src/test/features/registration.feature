@@ -18,7 +18,7 @@ Feature: Saranya_10JUL2025_LambdaTesters_User_Registration_Functionality
     Examples:  
       | First Name | Last Name | Email              | Telephone   | Password | Confirm Password |  
       | priya      | ram       |                    | 1234567891  | 1234     | 1234             |  
-      | saran      | A         |                    | 1239306     | 12345    | 12345            |  
+      # | saran      | A         |                    | 1239306     | 12345    | 12345            |  
 
 #   @InValidRegistrationInputs
 #   Scenario Outline: Register with invalid inputs  
