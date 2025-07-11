@@ -17,7 +17,8 @@ export default class RegisterPage{
         cofirmpass:"fieldset:nth-of-type(2)>div:nth-of-type(2) >div>input",
         newsRadioYes:"fieldset legend:contains('Newsletter') ~ div input[value='1']",
         newsRadioNo:"fieldset legend:contains('Newsletter') ~ div input[value='0']",
-        policyCheckBox:"//input[@type='checkbox' and @name='agree']",
+        // policyCheckBox:"//input[@type='checkbox' and @name='agree']",
+        policyCheckBox:"#content > form > div > div > div > label",
         regiterSubmitButton:"//input[@type='submit' and @value='Continue']"
     }   
     

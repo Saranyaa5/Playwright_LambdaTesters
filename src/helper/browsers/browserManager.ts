@@ -1,7 +1,13 @@
 import { LaunchOptions,chromium,firefox,webkit } from "@playwright/test";
 
+// const options: LaunchOptions = {
+//     headless:!true
+// }
+
+const headlessMode = process.env.npm_config_HEAD === "false"?false:true;
+
 const options: LaunchOptions = {
-    headless:!true
+    headless: headlessMode
 }
 
 export const invokeBrowser= ()=>{

@@ -26,7 +26,6 @@ When('the user should see the registration page', async function () {
          });
 
  When('the user enters {string}, {string}, {string}, {string}, {string} and {string}', async function (firstName, lastName, emil, telephone, password, confirmPassword) {
-  // logic to create uninque email usinf current timestamp
           const timestamp = new Date().getTime();
           let email = `${firstName.toLowerCase()}.${lastName.toLowerCase()}+${timestamp}@example.com`;
           await pageFixture.registerPage!.enterRegistrationDetails(firstName, lastName, email, telephone, password, confirmPassword);
@@ -35,22 +34,41 @@ When('the user should see the registration page', async function () {
          });
 
 When('agrees to the Privacy Policy', async function () {
-          // await pageFixture.registerPage!.agreeToPrivacyPolicy();
+          await pageFixture.registerPage!.agreeToPrivacyPolicy();
           pageFixture.logger?.info('Agreed to Privacy Policy');
          });
  When('submits the registration form', async function () {
-           // Write code here that turns the phrase above into concrete actions
-          //  return 'pending';
+          await pageFixture.registerPage!.submitRegistrationForm();
          });
 
-Then('the user should see {string} for {string}', async function (string, string2) {
-           // Write code here that turns the phrase above into concrete actions
-          //  return 'pending';
+Then('the user should see {string} for {string}', async function (error_message, test_case_name) {
+          if(test_case_name=='empty first name'){
+                await expect(pageFixture.page!.locator('.text-danger')).toContainText(error_message);
+          }
+          else if(test_case_name=='existing email'){
+                await expect(pageFixture.page!.locator('.alert-danger')).toHaveText(error_message);
+
+          }
+          else if(test_case_name=='empty password'){
+                const passwordError =pageFixture.page!.locator('#input-password + .text-danger');
+                await expect(passwordError).toHaveText(error_message);
+
+          }
+          else if(test_case_name=='password mismatch'){
+                await expect(pageFixture.page!.locator('.text-danger')).toContainText(error_message);
+          }
+          else if(test_case_name=='Not checking privacy policy'){
+                 await expect(pageFixture.page!.locator('.alert-danger')).toHaveText(error_message);
+          }
          });
 
-
+When('the user enters invalid {string}, {string}, {string}, {string}, {string} and {string}', async function (firstName, lastName, email, telephone, password, confirmPassword) {
+          await pageFixture.registerPage!.enterRegistrationDetails(firstName, lastName, email, telephone, password, confirmPassword);
+          pageFixture.logger?.info(`Entered registration details: ${firstName}, ${lastName}, ${email}, ${telephone}, ${password}, ${confirmPassword}`);
+          
+         });
 
 Then('the user should see {string}', async function (string) {
-           // Write code here that turns the phrase above into concrete actions
-          //  return 'pending';
+        await expect(pageFixture.page!.locator('h1')).toHaveText(string);
+        pageFixture.logger?.info(`Verified that the user sees: ${string}`);
          });
